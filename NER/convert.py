@@ -3,7 +3,7 @@ import csv
 
 def calculate_error(strategy):
     errors = {
-        "LOW_POWER": 8.3,
+        "LOW_POWER": 8.7,
         "HIGH_POWER": 2.5
     }
     return errors.get(strategy, 0.0)

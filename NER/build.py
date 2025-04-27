@@ -2,23 +2,23 @@ import json
 import os
 import csv
 import matplotlib.pyplot as plt
-plt.style.use('seaborn-v0_8-darkgrid')
+plt.style.use('seaborn-darkgrid')
 
 error_mapping = {
-    "LOW_POWER": 8.3,
+    "LOW_POWER": 8.7,
     "HIGH_POWER": 2.5
 }
 
 file_list = [
-    "results/results_low.json",
-    "results/results_high.json",    
-    #"results_bis/results_low.json",
-    #"results_bis/results_high.json",    
+    #"results/results_low.json",
+    #"results/results_high.json",    
+    "results_bis/results_low.json",
+    "results_bis/results_high.json",    
 ]
 
 for num in range(3, 9):
-    file_list.append(f"results/results_err{num}.json")
-    #file_list.append(f"results_bis/results_err{num}.json")
+    #file_list.append(f"results/results_err{num}.json")
+    file_list.append(f"results_bis/results_err{num}.json")
 
 labels = []
 avg_errors = []
@@ -62,8 +62,8 @@ for filename in file_list:
     print(f"  Carbonio totale: {total_carbon:.2f} gCO2-eq")
     print("")
 
-csv_filename = "graph.csv"
-#csv_filename = "graph_bis.csv"
+#csv_filename = "graph.csv"
+csv_filename = "graph_bis.csv"
 with open(csv_filename, mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(["file", "error", "carbon"])
@@ -84,5 +84,5 @@ plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
 plt.grid(True)
 plt.tight_layout()
-plt.savefig("graph.png", dpi=300)
-#plt.savefig("graph_bis.png", dpi=300)
+#plt.savefig("graph.png", dpi=300)
+plt.savefig("graph_bis.png", dpi=300)
